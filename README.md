@@ -52,7 +52,7 @@ Here's a walkthrough of implemented user stories: https://www.loom.com/share/f79
 
 ## Gif
 
-
+![alt text](<Kapture 2026-03-15 at 22.16.11.gif>)
 
 ## Notes
 
