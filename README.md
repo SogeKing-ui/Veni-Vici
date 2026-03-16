@@ -1,65 +1,67 @@
-# Web Development Project 4 - *Name of App Here*
+# Web Development Project 4 - Veni Vici!
 
-Submitted by: **Your Name Here**
+Submitted by: Jehu Emilcar
 
-This web app: **insert description**
+This web app: This website allows users to discover random cats using data from The Cat API. When the "Discover!" button is clicked, the app fetches a random cat image and displays information about the cat such as its breed, origin, and life span. Users can click any displayed attribute to add it to a ban list, which prevents future API results with that attribute from appearing. The app also keeps a history of previously viewed cats so users can see what they have discovered during the session.
 
-Time spent: **X** hours spent in total
+
+Time spent: 3 hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed: 
 
-- [ ] **Application features a button that creates a new API fetch request on click and displays at least three attributes and an image obtained from the returned JSON data**
+- [x] **Application features a button that creates a new API fetch request on click and displays at least three attributes and an image obtained from the returned JSON data**
   - The type of attribute displayed for each image should be consistent across API calls (i.e. if you are using a cat API, and display the color, breed, and age in response to an initial API call, subsequent button clicks should also result in the color, breed, and age being displayed)
-- [ ] **Only one item/data from API call response is viewable at a time and at least one image is displayed per API call**
+- [x] **Only one item/data from API call response is viewable at a time and at least one image is displayed per API call**
   - A single result of an API call is displayed at a time 
   - Displayed attributes should match the displayed image (i.e., if showing a picture of a Siamese cat and the attribute breed, the displayed breed should be 'Siamese' not 'Ragdoll' or another breed that doesn't match)
   - There is at least one image per API call
-- [ ] **API call response results should appear random to the user**
+- [x] **API call response results should appear random to the user**
   - Clicking on the API call button should generate a seemingly random new result each time
   - Note: Repeat results are permitted but the API used should have a reasonably large amount of data and repeats should not be frequent
-- [ ] **Clicking on a displayed value for one attribute adds it to a displayed ban **list**
+- [x] **Clicking on a displayed value for one attribute adds it to a displayed ban **list**
   - At least one attribute for each API result should be clickable
   - Clicking on a clickable attribute not on the ban list, should imnmediately add it to the ban list 
   - Clicking on an attribute in the ban list should immediately remove it from the ban list 
-- [ ] **Attributes on the ban list prevent further images/API results with that attribute from being displayed**
+- [x] **Attributes on the ban list prevent further images/API results with that attribute from being displayed**
   - Clicking on the API call button should not result in any image/attributes with attribute values in the ban list being displayed (ex. Using a cat API, if the ban list includes the value 'Siberian' for the breed attribute, clicking on the Discover button should never result in a Siberian cat being displayed)
   - Note: More attribute values on the ban list may result in a higher frequency of repeat results
-  -  [ ] _To ensure an accurate grade, your recording **must** show that when clicked, an attribute in the ban list is immediately removed from the list of banned attributes_
+  -  [x] _To ensure an accurate grade, your recording **must** show that when clicked, an attribute in the ban list is immediately removed from the list of banned attributes_
 
 
 The following **optional** features are implemented:
 
-- [ ] Multiple types of attributes are clickable and can be added to the ban list
-- [ ] Users can see a stored history of their previously displayed  results from this session
+- [x] Multiple types of attributes are clickable and can be added to the ban list
+- [x] Users can see a stored history of their previously displayed  results from this session
   - A dedicated section of the application displays all the previous images/attributes seen before
   - Each time the API call button is clicked, the history updates with the newest API result
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you added to improve the site's functionality!
+* [x] Added edge-case handling to prevent the app from getting stuck when too many attributes are banned
+* [x] Improved the UI with a three-column layout (history panel, main card, ban list)
+* [x] Styled attribute buttons and ban list buttons for clearer interaction
+* [x] Used environment variables (.env) to securely store the API key
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories: https://www.loom.com/share/f795898c6a804340a7eaeae512f92cb1
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+## Gif
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+    Describe any challenges encountered while building the app:
+
+    One challenge I encountered while building this project was handling the ban list logic. I needed to make sure that when a user clicked an attribute (such as breed, origin, or life span), it would be added to the ban list and prevent future API results with that attribute from being displayed. Initially, I had to figure out how to check each new API result against the banned values and skip results that contained those attributes. Another challenge was ensuring that the API fetch continued searching until a valid result was found that did not contain any banned attributes. Once I implemented this filtering logic, the app worked as expected.
+
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2026] [Jehu Emilcar]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
