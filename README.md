@@ -58,7 +58,8 @@ Here's a walkthrough of implemented user stories: https://www.loom.com/share/f79
 
     Describe any challenges encountered while building the app:
 
-    One challenge I encountered while building this project was handling the ban list logic. I needed to make sure that when a user clicked an attribute (such as breed, origin, or life span), it would be added to the ban list and prevent future API results with that attribute from being displayed. Initially, I had to figure out how to check each new API result against the banned values and skip results that contained those attributes. Another challenge was ensuring that the API fetch continued searching until a valid result was found that did not contain any banned attributes. Once I implemented this filtering logic, the app worked as expected.
+    One challenge I encountered while building this project was handling the ban list logic. 
+    I needed to make sure that when a user clicked an attribute (such as breed, origin, or life span), it would be added to the ban list and prevent future API results with that attribute from being displayed. Initially, I had to figure out how to check each new API result against the banned values and skip results that contained those attributes. Another challenge was ensuring that the API fetch continued searching until a valid result was found that did not contain any banned attributes. Once I implemented this filtering logic, the app worked as expected.
 
 
 ## License
