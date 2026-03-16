@@ -96,6 +96,11 @@ function App() {
       <div className="main-content">
 
         <h1>Veni Vici!</h1>
+
+        <p className="student-info">
+          Jehu Emilcar – Student Z#: 23568962
+        </p>
+
         <p>Discover cats from your wildest dreams!</p>
 
         {catData && (
