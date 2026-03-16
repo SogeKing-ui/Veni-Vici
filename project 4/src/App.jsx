@@ -9,54 +9,59 @@ function App() {
   const [history, setHistory] = useState([]);
 
   const fetchCat = async () => {
-    try {
-      let foundCat = null;
-      let attempts = 0;
+  try {
+    let foundCat = null
+    let attempts = 0
+    const MAX_ATTEMPTS = 25
 
-      while (!foundCat && attempts < 20) {
-        attempts++;
+    while (!foundCat && attempts < MAX_ATTEMPTS) {
+      attempts++
 
-        const response = await fetch(
-          "https://api.thecatapi.com/v1/images/search?has_breeds=1",
-          {
-            headers: {
-              "x-api-key": API_KEY,
-            },
+      const response = await fetch(
+        "https://api.thecatapi.com/v1/images/search?has_breeds=1",
+        {
+          headers: {
+            "x-api-key": API_KEY
           }
-        );
-
-        const data = await response.json();
-        const cat = data[0];
-
-        if (!cat || !cat.breeds || cat.breeds.length === 0) continue;
-
-        const breed = cat.breeds[0];
-
-        const newCat = {
-          image: cat.url,
-          breed: breed.name,
-          origin: breed.origin,
-          lifeSpan: breed.life_span,
-        };
-
-        const banned =
-          banList.includes(newCat.breed) ||
-          banList.includes(newCat.origin) ||
-          banList.includes(newCat.lifeSpan);
-
-        if (!banned) {
-          foundCat = newCat;
         }
+      )
+
+      const data = await response.json()
+      const cat = data[0]
+
+      if (!cat || !cat.breeds || cat.breeds.length === 0) continue
+
+      const breed = cat.breeds[0]
+
+      const newCat = {
+        image: cat.url,
+        breed: breed.name,
+        origin: breed.origin,
+        lifeSpan: breed.life_span
       }
 
-      if (foundCat) {
-        setCatData(foundCat);
-        setHistory((prev) => [foundCat, ...prev]);
+      const banned =
+        banList.includes(newCat.breed) ||
+        banList.includes(newCat.origin) ||
+        banList.includes(newCat.lifeSpan)
+
+      if (!banned) {
+        foundCat = newCat
       }
-    } catch (error) {
-      console.error("Error fetching cat:", error);
     }
-  };
+
+    if (!foundCat) {
+      alert("Too many attributes banned! Try removing something from the ban list.")
+      return
+    }
+
+    setCatData(foundCat)
+    setHistory((prev) => [foundCat, ...prev])
+
+  } catch (error) {
+    console.error("Error fetching cat:", error)
+  }
+}
 
   const addBan = (value) => {
     if (!banList.includes(value)) {
