@@ -6,6 +6,7 @@ function App() {
 
   const [catData, setCatData] = useState(null);
   const [banList, setBanList] = useState([]);
+  const [history, setHistory] = useState([]);
 
   const fetchCat = async () => {
     try {
@@ -38,17 +39,20 @@ function App() {
           lifeSpan: breed.life_span,
         };
 
-        const isBanned =
+        const banned =
           banList.includes(newCat.breed) ||
           banList.includes(newCat.origin) ||
           banList.includes(newCat.lifeSpan);
 
-        if (!isBanned) {
+        if (!banned) {
           foundCat = newCat;
         }
       }
 
-      setCatData(foundCat);
+      if (foundCat) {
+        setCatData(foundCat);
+        setHistory((prev) => [foundCat, ...prev]);
+      }
     } catch (error) {
       console.error("Error fetching cat:", error);
     }
@@ -66,31 +70,62 @@ function App() {
 
   return (
     <div className="app">
+
+      {/* History Panel */}
+      <div className="history-panel">
+        <h2>Who have we seen so far?</h2>
+
+        {history.length === 0 ? (
+          <p>No cats discovered yet.</p>
+        ) : (
+          history.map((cat, index) => (
+            <div key={index} className="history-item">
+              <img src={cat.image} alt="cat" />
+              <p>{cat.breed} from {cat.origin}</p>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Main Content */}
       <div className="main-content">
+
         <h1>Veni Vici!</h1>
         <p>Discover cats from your wildest dreams!</p>
 
         {catData && (
           <div className="cat-section">
+
             <div className="attributes">
               <button onClick={() => addBan(catData.breed)}>
                 {catData.breed}
               </button>
+
               <button onClick={() => addBan(catData.origin)}>
                 {catData.origin}
               </button>
+
               <button onClick={() => addBan(catData.lifeSpan)}>
                 {catData.lifeSpan} years
               </button>
             </div>
 
-            <img src={catData.image} alt={catData.breed} width="300" />
+            <img
+              className="cat-image"
+              src={catData.image}
+              alt={catData.breed}
+            />
+
           </div>
         )}
 
-        <button onClick={fetchCat}>Discover!</button>
+        <button className="discover-btn" onClick={fetchCat}>
+          Discover!
+        </button>
+
       </div>
 
+      {/* Ban List */}
       <div className="ban-list">
         <h2>Ban List</h2>
         <p>Click an item to remove it</p>
@@ -99,12 +134,18 @@ function App() {
           <p>No banned attributes yet.</p>
         ) : (
           banList.map((item, index) => (
-            <button key={index} onClick={() => removeBan(item)}>
+            <button
+              key={index}
+              className="ban-item"
+              onClick={() => removeBan(item)}
+            >
               {item}
             </button>
           ))
         )}
+
       </div>
+
     </div>
   );
 }
