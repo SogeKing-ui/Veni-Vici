@@ -51,6 +51,17 @@ Here's a walkthrough of implemented user stories: https://www.loom.com/share/f79
 
 ![alt text](<Kapture 2026-03-15 at 22.16.11.gif>)
 
+## Setup
+
+This app uses [The Cat API](https://thecatapi.com), which requires a free API key.
+
+1. Get a key at https://thecatapi.com
+2. Inside the `project 4` folder, copy `.env.example` to `.env`
+3. Add your key: `VITE_CAT_API_KEY=your_key_here`
+4. Run `npm install` and then `npm run dev`
+
+The `.env` file is gitignored and should never be committed.
+
 ## Notes
 
     Describe any challenges encountered while building the app:
