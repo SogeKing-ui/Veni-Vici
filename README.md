@@ -1,8 +1,5 @@
-# Web Development Project 4 - Veni Vici!
+# Web Development - Veni Vici!
 
-Submitted by: Jehu Emilcar
-
-Z#: 23568962
 
 This web app: This website allows users to discover random cats using data from The Cat API. When the "Discover!" button is clicked, the app fetches a random cat image and displays information about the cat such as its breed, origin, and life span. Users can click any displayed attribute to add it to a ban list, which prevents future API results with that attribute from appearing. The app also keeps a history of previously viewed cats so users can see what they have discovered during the session.
 
